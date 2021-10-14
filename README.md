@@ -1,1 +1,3 @@
-This is a starter template for [Learn Next.js](https://nextjs.org/learn).
+As of 14/10 I built a basic frontend.
+I plan to connect the app to Firbase Auth.
+Redis will be the DB.
