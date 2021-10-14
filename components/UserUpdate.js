@@ -1,17 +1,18 @@
 import { useState } from "react";
 import generateData from "../middleware/generateData";
+import firebase from "../middleware/firebase";
+
+// import { set } from "../middleware/redisClient";
 
 export default function userUpdate(props) {
-    // todo: random user name, random location
-    // location range:
-    // Latitudes range from -90 to 90, and longitudes range from -180 to 80.
-
+    
     const [name, setName] = useState("");
     const [latitude, setLatitude] = useState("");
     const [longitude, setLongitude] = useState("");
 
     function submit(data) {
         console.log(data);
+        // set();
     }
 
 
