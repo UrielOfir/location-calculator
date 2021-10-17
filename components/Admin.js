@@ -1,5 +1,6 @@
 import { useState } from "react";
 import generateData from "../middleware/generateData";
+// import redis from "../middleware/redis";
 
 export default function Admin() {
 
@@ -43,7 +44,7 @@ export default function Admin() {
                 </label>
                 <br />
             </form>
-            <button onClick={() => submit({ name, latitude, longitude })}>Submit</button>
+            <button onClick={() => redis()}>Submit</button>
             <br />
             <button onClick={() => generateLocalData()}>Generate Data</button>
         </div>);

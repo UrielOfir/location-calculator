@@ -1,4 +1,4 @@
-import googleAuth from "../middleware/firebase"
+import {googleAuth, } from "../middleware/firebase"
 
 
 export default function Login(props) {
