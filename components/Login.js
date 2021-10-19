@@ -16,7 +16,7 @@ export default function Login(props) {
                 })
             }}>login as user</button>}
             <br />
-            {<button onClick={() => { props.setIsAdmin(true) }}>login as admin</button>}
+            {<button onClick={() => props.setIsAdmin(true)}>login as admin</button>}
         </>
     )
 }

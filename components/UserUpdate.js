@@ -1,18 +1,29 @@
 import { useState } from "react";
 import generateData from "../middleware/generateData";
-import firebase from "../middleware/firebase";
-
-// import { set } from "../middleware/redisClient";
+import useGeolocation from "../middleware/useGeolocation";
+import axios from "axios";
 
 export default function userUpdate(props) {
-    
+
     const [name, setName] = useState("");
     const [latitude, setLatitude] = useState("");
     const [longitude, setLongitude] = useState("");
 
+    const geolocation = useGeolocation()
+
     function submit(data) {
-        console.log(data);
-        // set();
+        axios.post('/api', { actionType: "setUserLocation",key: name, value: `${latitude} ${longitude}` })
+            .then(function (response) {
+                // handle success
+                console.log("req sent", response);
+            })
+            .catch(function (error) {
+                // handle error
+                console.log(error);
+            })
+            .then(function () {
+                // always executed
+            });
     }
 
 
@@ -49,6 +60,24 @@ export default function userUpdate(props) {
             <button onClick={() => submit({ name, latitude, longitude })}>Submit</button>
             <br />
             <button onClick={() => generateLocalData()}>Generate Data </button>
+            <div>
+                {!geolocation.error
+                    ? (
+                        <ul>
+                            <li>Latitude:          {geolocation.latitude}</li>
+                            <li>Longitude:         {geolocation.longitude}</li>
+                            <li>Location accuracy: {geolocation.accuracy}</li>
+                            <li>Altitude:          {geolocation.altitude}</li>
+                            <li>Altitude accuracy: {geolocation.altitudeAccuracy}</li>
+                            <li>Heading:           {geolocation.heading}</li>
+                            <li>Speed:             {geolocation.speed}</li>
+                            <li>Timestamp:         {geolocation.timestamp}</li>
+                        </ul>
+                    )
+                    : (
+                        <p>No geolocation, sorry.</p>
+                    )}
+            </div>
         </div >
     );
 

@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged } from "firebase/auth";
-// TODO: Replace the following with your app's Firebase project configuration
+
 const firebaseConfig = {
     apiKey: process.env.NEXT_PUBLIC_FIREBASE_PUBLIC_API_KEY,
     authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
@@ -33,6 +33,8 @@ export async function googleAuth() {
         });
 };
 
+
+//TODO: 
 // export function onAuthStateChanged() {
 //     onAuthStateChanged(auth, (user) => {
 //         if (user) {

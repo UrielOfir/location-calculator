@@ -8,9 +8,11 @@
     "start": "next start"
   },
   "dependencies": {
+    "axios": "^0.23.0",
     "firebase": "^9.1.2",
     "next": "^11.0.0",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "tedis": "^0.1.12"
   }
 }

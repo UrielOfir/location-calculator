@@ -1,15 +1,36 @@
 import { useState } from "react";
 import generateData from "../middleware/generateData";
-// import redis from "../middleware/redis";
+import axios from "axios";
+
+import List from "./List";
 
 export default function Admin() {
 
     const [latitude, setLatitude] = useState("");
     const [longitude, setLongitude] = useState("");
     const [radius, setRadius] = useState("");
+    const [usersInCircle, setUsersInCircle] = useState([]);
 
     function submit(data) {
-        console.log(data);
+        axios.post('/api', { actionType: "calculateDistance", latitude, longitude, radius })
+            .then(function (response) {
+                // handle success
+                console.log("req sent", response.data);
+                setUsersInCircle(response.data)
+            })
+            .catch(function (error) {
+                // handle error
+                console.log(error);
+            })
+            .then(function () {
+                // always executed
+            });
+    }
+
+    function generateDataLocal() {
+        setLatitude(generateData().latitude);
+        setLongitude(generateData().longitude);
+        setRadius(generateData().radius);
     }
 
     return (
@@ -44,15 +65,12 @@ export default function Admin() {
                 </label>
                 <br />
             </form>
-            <button onClick={() => redis()}>Submit</button>
+            <button onClick={() => submit()}>Submit</button>
             <br />
-            <button onClick={() => generateLocalData()}>Generate Data</button>
+            <button onClick={() => generateDataLocal()}>Generate Data</button>
+            <List arr={usersInCircle}/>
         </div>);
 
-    function generateLocalData() {
-        setLatitude(generateData().latitude);
-        setLongitude(generateData().longitude);
-        setRadius(generateData().radius);
-    }
+
 }
 
