@@ -12,7 +12,7 @@ export default function userUpdate(props) {
     const geolocation = useGeolocation()
 
     function submit(data) {
-        axios.post('/api', { actionType: "setUserLocation",key: name, value: `${latitude} ${longitude}` })
+        axios.post('/api/userUpdates', { name, longitude, latitude })
             .then(function (response) {
                 // handle success
                 console.log("req sent", response);

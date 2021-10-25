@@ -12,11 +12,10 @@ export default function Admin() {
     const [usersInCircle, setUsersInCircle] = useState([]);
 
     function submit(data) {
-        axios.post('/api', { actionType: "calculateDistance", latitude, longitude, radius })
+        axios.post('/api/adminReq', { actionType: "calculateDistance", latitude, longitude, radius })
             .then(function (response) {
                 // handle success
                 console.log("req sent", response.data);
-                setUsersInCircle(response.data)
             })
             .catch(function (error) {
                 // handle error
@@ -68,7 +67,7 @@ export default function Admin() {
             <button onClick={() => submit()}>Submit</button>
             <br />
             <button onClick={() => generateDataLocal()}>Generate Data</button>
-            <List arr={usersInCircle}/>
+            {/* <List arr={usersInCircle}/> */}
         </div>);
 
 
