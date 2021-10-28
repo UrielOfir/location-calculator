@@ -26,7 +26,6 @@ export default function userUpdate(props) {
             });
     }
 
-
     return (
         <div>
             <div>
