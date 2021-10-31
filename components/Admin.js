@@ -12,7 +12,7 @@ export default function Admin() {
     const [usersInCircle, setUsersInCircle] = useState([]);
 
     function submit(data) {
-        axios.post('/api/adminReq', { actionType: "calculateDistance", latitude, longitude, radius })
+        axios.post('/api/adminReq', { latitude, longitude, radius })
             .then(function (response) {
                 // handle success
                 console.log("req sent", response.data);

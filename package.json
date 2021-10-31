@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "localhost.run": "ssh -R 80:localhost:3000 localhost.run"
   },
   "dependencies": {
     "axios": "^0.23.0",
